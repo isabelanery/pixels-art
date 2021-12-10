@@ -14,34 +14,10 @@ for (let i = 0; i<5; i+=1) {
     }
 }
 
-// montar uma função que seleciona a cor clicada - adiciona a classe SELECTED e a aplica ao pixel clicado posteriormente, removendo a classe selected
-// criar outra função .onload que seleciona a cor preta 
-// criar uma função que aplica a cor selecionada ao pixel 
+// onload - funçao adiciona selected à cor black 
 
-// let blackSelect = document.querySelector('.selected'); 
+const black = document.querySelector('#one');
 
-// blackSelect.addEventListener("onload", selectColor);
-
-
-// window.onload = function selectBlack () { 
-//     let black = document.querySelector('#one');
-//     black.className = 'color selected'; 
-
-
-// }
-
-
-
-// function selectColor() {
-//     // adiciona selected a classe da cor selecionada 
-//     // remove selected da classe da cor que estava selecionada anteriormente 
-
-//     target
-// }
-
-// function changeColor() { 
-//     // aplica a cor selecionada ao pixel clicado 
-// }
-
-// blackSelect.addEventListener("onload", selectColor);
-
+window.onload = function() {
+    black.classList.add('selected');
+}
