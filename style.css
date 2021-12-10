@@ -1,40 +1,42 @@
-* { 
-    
-}
-
 body { 
     background-color: rgb(239, 239, 239);
 }
 
 #title { 
-    text-align: center;
+    font-family: monospace; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#color-palette {
-    
+ #color-palette {
+    display: flex;
+    justify-content: center;
 }
 
 .color {
     border: solid black 1px;
-    display: inline-block;
-    padding: 11px;
-}
+    display: flex;
+    
+    height: 20px;
+    width: 20px;
+} 
 
-.one {
+ #one {
     background-color: black;
 }
 
-.two { 
-    background-color: rgb(12, 81, 83);;
+#two { 
+    background-color: rgb(12, 81, 83);; 
 }
 
-.three { 
+ #three { 
     background-color: cadetblue
 }
 
-.four { 
-    background-color: rgb(122, 190, 194);
-}
+#four { 
+    background-color: rgb(122, 190, 194); 
+} 
 
 .pixel { 
     background-color: white;
@@ -42,8 +44,13 @@ body {
     height: 38px;
     width: 38px;
     border: solid black 1px;
-}
+    margin:-2px;
+} 
+
+
 
 #pixel-board { 
     line-height: 0px;
-}
+    text-align: center;
+    margin-top: 17px
+} 
