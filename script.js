@@ -1,13 +1,13 @@
 // cria o pixel board
 const insidePixelBoard = document.querySelector('#pixel-board');
 
-for (let i = 0; i<5; i+=1) {
+for (let i = 0; i < 5; i += 1) {
     const createLi = document.createElement('li'); 
     createLi.className = "linePixel"; 
 
     insidePixelBoard.appendChild(createLi);
 
-    for (let n = 0; n<5; n+=1) {
+    for (let n = 0; n < 5; n += 1) {
         const createPixel = document.createElement('div'); 
         createPixel.className = "pixel"; 
 
@@ -15,13 +15,14 @@ for (let i = 0; i<5; i+=1) {
     }
 }
 
-// declara onde estão os elementos
+// declara onde estão os elementos no DOM 
 const black = document.querySelector('#zero');
 const blue1 = document.querySelector('#one'); 
 const blue2 = document.querySelector('#two');
 const blue3 = document.querySelector('#three'); 
 const colorPalette = document.querySelector('#color-palette');
-const colorPalleteList = document.querySelectorAll('#color-palette'); 
+const colorPalleteList = document.querySelectorAll('#color-palette');
+let clearbtn = document.querySelector('#clear-board'); 
 let clickedColor = undefined;
 let clickedPixel = undefined; 
 let color = undefined;
@@ -48,7 +49,7 @@ function removeSelected () {
     }
 }
 
-
+// seleciona a cor 
 function selectColor () { 
     if (clickedColor.classList.contains('selected')) {
         color = clickedColor.id; 
@@ -59,9 +60,17 @@ function selectColor () {
     }
 }
 
+// pinta 
 function paint () {
     clickedPixel.id = color; 
 }
+
+function unpaint () {
+    clickedPixel.remove.id; 
+}
+
+
+
 
 // verifica qual a cor clicada 
 // armazena a cor em clicked color 
@@ -75,26 +84,17 @@ colorPalette.addEventListener('click', event => { // encontrei esse método no c
 // verifica qual o pixel clicado 
 insidePixelBoard.addEventListener('click', event => { 
     clickedPixel = event.target; // aguarda o click
-    paint()
+    paint (); 
+    // >>> falta remover a cor 
     // console.log(clickedPixel);
 })
 
+// funçao que reseta o pixel board 
+// function clearBoard () { 
+//     for(let index = 0; index < insidePixelBoard.length; index += 1) {
+//         let px = insidePixelBoard[index]; 
+//         px.style.backgroundColor = white;
+//     }
+// }
 
-
-// aplicar selected color ao selecte pixel 
-
-
-
-// black.addEventListener('click', verifySelected);
-// blue1.addEventListener('click', verifySelected);
-// blue2.addEventListener('click', verifySelected);
-// blue3.addEventListener('click', verifySelected);
-
-// funçao adiciona selected à cor clicada 
-
-
-
-// a ser atualizada conforme clica 
-
-
-// funçao remove selected da cor anterior
+// clearbtn.addEventListener('click', clearBoard());
