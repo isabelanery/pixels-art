@@ -3,24 +3,43 @@ body {
 }
 
 
+
 #title { 
     font-family: monospace; 
     display: flex;
-    align-items: center;
+    justify-content: center;
+    width: auto;
 }
 
  #color-palette {
     display: flex;
-    align-items: center;
-    
+    justify-content: center;
+    width: auto; 
+}
+
+#clear-board { 
+    display: flex;
+    font-family: monospace; 
+    display: flex;
+    justify-content: center;
+    width: 13%;
+}
+
+.btn {
+    display: flex;
+    width: auto;
+    justify-content: center;
+    margin: 17px;
 }
 
 #pixel-board { 
     line-height: 0px;
     list-style: none;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    
+    width: auto;
+    margin: 27px;
 } 
 
 .color {
@@ -51,8 +70,8 @@ body {
 .pixel { 
     background-color: white;
     display: inline-block;
-    height: 38px;
-    width: 38px;
+    height: 40px;
+    width: 40px;
     border: solid black 1px;
     margin: 0 px;
 } 
