@@ -24,7 +24,7 @@ const blue2 = document.querySelector('#two');
 const blue3 = document.querySelector('#three'); 
 const colorPalette = document.querySelector('#color-palette');
 const colorPalleteList = document.querySelectorAll('#color-palette');
-let clearbtn = document.querySelector('#clear-board'); 
+ 
 
 // armazenam futuros valores; 
 let clickedColor = undefined;
@@ -97,17 +97,53 @@ function paint (event) {
     }
 }
 
+// pinta os pixels 
 insidePixelBoard.addEventListener('click', paint);
+
+// // clear board 
+const boardElements = document.getElementsByClassName('linePixel');
+const pixelKid = document.querySelectorAll('.pixel'); 
+
+function clear () {
+    console.log(pixelKid)
+
+    for (let i = 0; i < pixelKid.length; i += 1) {
+        pixelKid[i].id = ""; 
+        }
+}
+
+
+// not working 
+// function clear () {
+//     for (let i = 0; i < boardElements.length; i += 1) {
+         
+//         for ( let n = 0; n < boardElements[i].children.length; n += 1 ){ 
+//             let pixelKid = boardElements[i].children[n]; 
+//             pixelKid.remove.id;
+//         }
+//     }
+//     console.log(boardElements)
+    
+// }
+
+const clearbtn = document.querySelector('#clear-board');
+
+clearbtn.addEventListener('click', clear);
+
+// // limpa o q
  
-// verifica qual o pixel clicado 
-insidePixelBoard.addEventListener('click', event => { 
-    clickedPixel = event.target; // aguarda o click
 
-    // if else paint (); 
-    // >>> falta remover a cor 
-    // console.log(clickedPixel);
-})
 
+
+
+// // verifica qual o pixel clicado 
+// insidePixelBoard.addEventListener('click', event => { 
+//     clickedPixel = event.target; // aguarda o click
+
+//     // if else paint (); 
+//     // >>> falta remover a cor 
+//     // console.log(clickedPixel);
+// })
 
 
 
@@ -119,4 +155,4 @@ insidePixelBoard.addEventListener('click', event => {
 //     }
 // }
 
-// clearbtn.addEventListener('click', clearBoard());
+//
