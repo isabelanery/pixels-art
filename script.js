@@ -91,6 +91,7 @@ function paint (event) {
     clickedPixel = event.target; 
     if (clickedPixel.id) { 
         clickedPixel.remove.id;
+        clickedPixel.id = color; 
     } else { 
         clickedPixel.id = color; 
     }
