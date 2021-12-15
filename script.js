@@ -112,25 +112,14 @@ function clear () {
         }
 }
 
-
-// not working 
-// function clear () {
-//     for (let i = 0; i < boardElements.length; i += 1) {
-         
-//         for ( let n = 0; n < boardElements[i].children.length; n += 1 ){ 
-//             let pixelKid = boardElements[i].children[n]; 
-//             pixelKid.remove.id;
-//         }
-//     }
-//     console.log(boardElements)
-    
-// }
-
 const clearbtn = document.querySelector('#clear-board');
 
 clearbtn.addEventListener('click', clear);
 
-// // limpa o q
+
+
+
+
  
 
 

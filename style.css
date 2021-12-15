@@ -16,15 +16,37 @@ itens centralizados, por√©m travando no teste npm. tentei com flex box mas tamb√
  #color-palette {
     display: flex;
     justify-content: center;
+    width: auto;
+    margin-top: 13px; 
+}
+
+#board-size {
+    display: flex;
+    justify-content: center;
     width: auto; 
+    margin-top: 23px;
+}
+
+#generate-board { 
+    display: flex;
+    font-family: monospace;
+    justify-content:center;
+    width: 13%;
+    margin-top: 13px;
+    margin: 11px;
+}
+
+.align { 
+    display: flex;
+    justify-content: center;
 }
 
 #clear-board { 
     display: flex;
     font-family: monospace; 
-    display: flex;
     justify-content: center;
     width: 13%;
+    margin: 0px;
 }
 
 .btn {
