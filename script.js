@@ -1,13 +1,15 @@
 // cria o pixel board
 const insidePixelBoard = document.querySelector('#pixel-board');
 
-for (let i = 0; i < 5; i += 1) {
+let inputNumber = 5;
+
+for (let i = 0; i < inputNumber; i += 1) {
     const createDiv = document.createElement('div'); 
     createDiv.className = "linePixel"; 
 
     insidePixelBoard.appendChild(createDiv);
 
-    for (let n = 0; n < 5; n += 1) {
+    for (let n = 0; n < inputNumber; n += 1) {
         const createPixel = document.createElement('div'); 
         createPixel.className = "pixel"; 
 
@@ -64,42 +66,37 @@ function classSelected () {
     }
 }
 
-// // pinta 
-// function paint () {
-//     clickedPixel.id = color; 
-// }
-
-// function unpaint () {
-//     clickedPixel.remove.id; 
-// }
-
 function selectColor (event) {
     clickedColor = event.target;  // o valor é indefinido pois aguarda o click 
     color = clickedColor.id; 
     classSelected();
 }
 
-
+// seleciona a cor com o click 
 black.addEventListener('click', selectColor); 
 blue1.addEventListener('click', selectColor); 
 blue2.addEventListener('click', selectColor); 
 blue3.addEventListener('click', selectColor); 
 
-
-
 // // verifica qual a cor clicada 
 // // armazena a cor em clicked color 
-// colorPalette.addEventListener('click', event => { // encontrei esse método no canal do Roger Melo, experimentei e resolvia o que eu queria, dai fui pesquisar mais sobre arrow functions e bubbling effect pra entender melhor o que está acontecendo aqui :) 
+// colorPalette.addEventListener('click', event => { // encontrei esse método no canal do Roger Melo, experimentei e resolvia o que eu queria, dai fui pesquisar mais sobre arrow functions e bubbling effect pra entender melhor o que está acontecendo aqui :) >> pedi ajuda pro meu amigo Du Pedroso e entendi que não tinha necessidade de usar arrow functions nesse caso e reescrevi com uma função normal agora que entendo melhor os event listeners 
 //     clickedColor = event.target;  // o valor é indefinido pois aguarda o click 
 //     color = clickedColor.id; 
 //     selectColor();
 //     // console.log(color);
 // } )
 
-// colorPalette.addEventListener('click', function (e) { 
-//     clickedColor = e.target;  // o valor é indefinido pois aguarda o click 
-//     color = clickedColor.id; 
-// }) 
+function paint (event) {
+    clickedPixel = event.target; 
+    if (clickedPixel.id) { 
+        clickedPixel.remove.id;
+    } else { 
+        clickedPixel.id = color; 
+    }
+}
+
+insidePixelBoard.addEventListener('click', paint);
  
 // verifica qual o pixel clicado 
 insidePixelBoard.addEventListener('click', event => { 
