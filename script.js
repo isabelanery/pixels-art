@@ -1,5 +1,5 @@
 // cria o pixel board (+ req 10 )
-const insidePixelBoard = document.querySelector('#pixel-board');
+let insidePixelBoard = document.querySelector('#pixel-board');
 
 function createPixelBoard (inputNumber) {
 
@@ -16,40 +16,7 @@ function createPixelBoard (inputNumber) {
             createDiv.appendChild(createPixel);
         }
     }
-
 }
-
-const inputN = document.querySelector('#board-size');
-const btnCreateBoard = document.querySelector('#generate-board'); 
-const sectionBoard = document.querySelector('#secPixelBoard');
-
-function generateNewBoard () { 
-    let size = inputN.value;
-    // inputN.value = null; 
-
-    let lines = document.querySelectorAll('.linePixel');
-
-    for (let i = 0; i < lines.length; i += 1) {
-        lines[i].remove();
-    }
-
-    createPixelBoard(size); 
-
-    console.log(lines)
-
-    // const idPixelBoard = document.getElementB('pixel-board'); 
-    // idPixelBoard.removeChildren(); 
-
-    // const newBoard = document.createElement('div');
-    // newBoard.id = 'pixel-board';
-
-    // sectionBoard.appendChild(newBoard);
-
-    // createPixelBoard(size); 
-    
-}
-
-btnCreateBoard.addEventListener('click', generateNewBoard);
 
 // declara onde estão os elementos no DOM 
 const black = document.querySelector('#zero');
@@ -119,8 +86,7 @@ blue3.addEventListener('click', selectColor);
 //     clickedColor = event.target;  // o valor é indefinido pois aguarda o click 
 //     color = clickedColor.id; 
 //     selectColor();
-//     // console.log(color);
-// } )
+// console.log(color);
 
 function paint (event) {
     clickedPixel = event.target; 
@@ -136,20 +102,42 @@ function paint (event) {
 
 insidePixelBoard.addEventListener('click', paint);
 
-// // clear board 
-const boardElements = document.getElementsByClassName('linePixel');
-const pixelKid = document.querySelectorAll('.pixel'); 
+// clear board 
+let pixelKid = document.querySelectorAll('.pixel'); 
 
 function clear () {
-    console.log(pixelKid)
-
-    for (let i = 0; i < pixelKid.length; i += 1) {
+    for ( let i = 0; i < pixelKid.length; i += 1) {
         pixelKid[i].id = ""; 
-        }
+    }
 }
 
 const clearbtn = document.querySelector('#clear-board');
 
 clearbtn.addEventListener('click', clear);
 
-// pixels dinamicos 
+// pixels dinamicos requisito 10 
+const inputN = document.querySelector('#board-size');
+const btnCreateBoard = document.querySelector('#generate-board'); 
+const sectionBoard = document.querySelector('#secPixelBoard');
+
+function generateNewBoard () { 
+    let size = inputN.value;
+
+    if (size < 5) { 
+        size = 5;
+    } else { 
+        size = size; 
+    }
+
+    
+    inputN.value = null; 
+
+    let lines = document.querySelectorAll('.linePixel');
+
+    for (let i = 0; i < lines.length; i += 1) {
+        lines[i].remove();
+    }
+ createPixelBoard(size);
+}
+
+btnCreateBoard.addEventListener('click', generateNewBoard);
