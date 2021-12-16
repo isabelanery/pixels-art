@@ -24,7 +24,8 @@ itens centralizados, por√©m travando no teste npm. tentei com flex box mas tamb√
     display: flex;
     justify-content: center;
     width: auto; 
-    margin-top: 23px;
+    margin-right: 13px;
+   
 }
 
 #generate-board { 
@@ -32,13 +33,14 @@ itens centralizados, por√©m travando no teste npm. tentei com flex box mas tamb√
     font-family: monospace;
     justify-content:center;
     width: 13%;
-    margin-top: 13px;
-    margin: 11px;
+   
+    
 }
 
 .align { 
     display: flex;
     justify-content: center;
+    margin-top: 13px;
 }
 
 #clear-board { 

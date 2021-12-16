@@ -1,21 +1,55 @@
-// cria o pixel board
+// cria o pixel board (+ req 10 )
 const insidePixelBoard = document.querySelector('#pixel-board');
 
-let inputNumber = 5;
+function createPixelBoard (inputNumber) {
 
-for (let i = 0; i < inputNumber; i += 1) {
-    const createDiv = document.createElement('div'); 
-    createDiv.className = "linePixel"; 
+    for (let i = 0; i < inputNumber; i += 1) {
+        const createDiv = document.createElement('div'); 
+        createDiv.className = "linePixel"; 
 
-    insidePixelBoard.appendChild(createDiv);
+        insidePixelBoard.appendChild(createDiv);
 
-    for (let n = 0; n < inputNumber; n += 1) {
-        const createPixel = document.createElement('div'); 
-        createPixel.className = "pixel"; 
+        for (let n = 0; n < inputNumber; n += 1) {
+            const createPixel = document.createElement('div'); 
+            createPixel.className = "pixel"; 
 
-        createDiv.appendChild(createPixel);
+            createDiv.appendChild(createPixel);
+        }
     }
+
 }
+
+const inputN = document.querySelector('#board-size');
+const btnCreateBoard = document.querySelector('#generate-board'); 
+const sectionBoard = document.querySelector('#secPixelBoard');
+
+function generateNewBoard () { 
+    let size = inputN.value;
+    // inputN.value = null; 
+
+    let lines = document.querySelectorAll('.linePixel');
+
+    for (let i = 0; i < lines.length; i += 1) {
+        lines[i].remove();
+    }
+
+    createPixelBoard(size); 
+
+    console.log(lines)
+
+    // const idPixelBoard = document.getElementB('pixel-board'); 
+    // idPixelBoard.removeChildren(); 
+
+    // const newBoard = document.createElement('div');
+    // newBoard.id = 'pixel-board';
+
+    // sectionBoard.appendChild(newBoard);
+
+    // createPixelBoard(size); 
+    
+}
+
+btnCreateBoard.addEventListener('click', generateNewBoard);
 
 // declara onde estão os elementos no DOM 
 const black = document.querySelector('#zero');
@@ -36,6 +70,7 @@ window.onload = function() {
     black.classList.add('selected');
     clickedColor = black.id;
     color = black.id;
+    createPixelBoard(5); 
     // console.log(clickedColor) 
 }
 
@@ -98,6 +133,7 @@ function paint (event) {
 }
 
 // pinta os pixels 
+
 insidePixelBoard.addEventListener('click', paint);
 
 // // clear board 
@@ -116,32 +152,4 @@ const clearbtn = document.querySelector('#clear-board');
 
 clearbtn.addEventListener('click', clear);
 
-
-
-
-
- 
-
-
-
-
-// // verifica qual o pixel clicado 
-// insidePixelBoard.addEventListener('click', event => { 
-//     clickedPixel = event.target; // aguarda o click
-
-//     // if else paint (); 
-//     // >>> falta remover a cor 
-//     // console.log(clickedPixel);
-// })
-
-
-
-// // funçao que reseta o pixel board 
-// function clearBoard () { 
-//     for(let index = 0; index < insidePixelBoard.length; index += 1) {
-//         let px = insidePixelBoard[index]; 
-//         px.style.backgroundColor = white;
-//     }
-// }
-
-//
+// pixels dinamicos 
