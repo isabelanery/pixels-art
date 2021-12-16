@@ -125,10 +125,11 @@ function generateNewBoard () {
 
     if (size < 5) { 
         size = 5;
+    } else if ( size > 50) {
+        size = 50;
     } else { 
-        size = size; 
+        size = size
     }
-
     
     inputN.value = null; 
 
