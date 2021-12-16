@@ -103,7 +103,7 @@ function paint (event) {
 insidePixelBoard.addEventListener('click', paint);
 
 // clear board 
-let pixelKid = document.querySelectorAll('.pixel'); 
+let pixelKid = document.getElementsByClassName('pixel'); 
 
 function clear () {
     for ( let i = 0; i < pixelKid.length; i += 1) {
@@ -138,7 +138,12 @@ function generateNewBoard () {
     for (let i = 0; i < lines.length; i += 1) {
         lines[i].remove();
     }
- createPixelBoard(size);
+
+    if (size === undefined) { 
+        window.alert('Board inválido!')
+    } else {
+        createPixelBoard(size); 
+    }
 }
 
 btnCreateBoard.addEventListener('click', generateNewBoard);
