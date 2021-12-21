@@ -72,22 +72,6 @@ itens centralizados, por√©m travando no teste npm. tentei com flex box mas tamb√
     width: 20px;
 } 
 
-#zero {
-    background-color: black;
-}
-
-#one { 
-    background-color: rgb(12, 81, 83);; 
-}
-
- #two { 
-    background-color: cadetblue
-}
-
-#three { 
-    background-color: rgb(137, 212, 216); 
-} 
-
 .pixel { 
     background-color: white;
     display: inline-block;
@@ -96,6 +80,23 @@ itens centralizados, por√©m travando no teste npm. tentei com flex box mas tamb√
     border: solid black 1px;
     margin: 0 px;
 } 
+
+.zero {
+    background-color: black;
+}
+
+.one { 
+    background-color: rgb(12, 81, 83);; 
+}
+
+ .two { 
+    background-color: cadetblue
+}
+
+.three { 
+    background-color: rgb(137, 212, 216); 
+} 
+
 
 #secPixelBoard { 
     display: flex;

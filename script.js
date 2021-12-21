@@ -18,15 +18,6 @@ function createPixelBoard (inputNumber) {
     }
 }
 
-// declara onde estão os elementos no DOM 
-const black = document.querySelector('#zero');
-const blue1 = document.getElementById('one'); 
-const blue2 = document.getElementById('two');
-const blue3 = document.getElementById('three'); 
-const colorPalette = document.querySelector('#color-palette');
-const colorPalleteList = document.querySelectorAll('#color-palette');
- 
-
 // armazenam futuros valores; 
 let clickedColor = undefined;
 let clickedPixel = undefined; 
@@ -35,13 +26,22 @@ let color = undefined;
 // onload -  
 window.onload = function() {
     black.classList.add('selected');
-    clickedColor = black.id;
-    color = black.id;
+    clickedColor = black.classList[1]; 
+    // console.log(clickedColor)
+    color = black.classList[1];
+    // console.log(color)
     createPixelBoard(5); 
 }
 
+// declara onde estão os elementos no DOM 
+const black = document.querySelector('.zero');
+const blue1 = document.querySelector('.one'); 
+const blue2 = document.querySelector('.two');
+const blue3 = document.querySelector('.three'); 
+const colorPalette = document.querySelector('#color-palette');
+const colorPalleteList = document.querySelectorAll('#color-palette');
 
-// remove e classe selected de todas as cores da paleta 
+// remove a classe selected de todas as cores da paleta 
 function removeSelected () { 
     if (black.classList.contains('selected')) {
         black.classList.remove('selected'); 
@@ -59,17 +59,20 @@ function removeSelected () {
 // seleciona a cor 
 function classSelected () { 
     if (clickedColor.classList.contains('selected')) {
-        color = clickedColor.id; 
+        color = clickedColor.classList[1];
+        // console.log(color) 
     } else { 
         removeSelected();
+        color = clickedColor.classList[1]; 
         clickedColor.classList.add('selected'); 
-        color = clickedColor.id; 
+        // console.log(color)
     }
 }
 
 function selectColor (event) {
     clickedColor = event.target;  // o valor é indefinido pois aguarda o click 
-    color = clickedColor.id; 
+    color = clickedColor.classList[1]; 
+    // console.log(color)
     classSelected();
 }
 
@@ -79,21 +82,13 @@ blue1.addEventListener('click', selectColor);
 blue2.addEventListener('click', selectColor); 
 blue3.addEventListener('click', selectColor); 
 
-// // verifica qual a cor clicada 
-// // armazena a cor em clicked color 
-// colorPalette.addEventListener('click', event => { // encontrei esse método no canal do Roger Melo, experimentei e resolvia o que eu queria, dai fui pesquisar mais sobre arrow functions e bubbling effect pra entender melhor o que está acontecendo aqui :) >> pedi ajuda pro meu amigo Du Pedroso e entendi que não tinha necessidade de usar arrow functions nesse caso e reescrevi com uma função normal agora que entendo melhor os event listeners 
-//     clickedColor = event.target;  // o valor é indefinido pois aguarda o click 
-//     color = clickedColor.id; 
-//     selectColor();
-// console.log(color);
-
 function paint (event) {
     clickedPixel = event.target; 
-    if (clickedPixel.id) { 
-        clickedPixel.remove.id;
-        clickedPixel.id = color; 
+    if (clickedPixel.classList.length >= 1) { 
+        clickedPixel.classList.remove(clickedPixel.classList[1]);
+        clickedPixel.classList.add(color); 
     } else { 
-        clickedPixel.id = color; 
+        clickedPixel.classList.add(color); 
     }
 }
 
@@ -106,7 +101,7 @@ let pixelKid = document.getElementsByClassName('pixel');
 
 function clear () {
     for ( let i = 0; i < pixelKid.length; i += 1) {
-        pixelKid[i].id = ""; 
+        pixelKid[i].classList.remove(pixelKid[i].classList[1]); 
     }
 }
 
