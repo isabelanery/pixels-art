@@ -27,6 +27,8 @@ itens centralizados, por√©m travando no teste npm. tentei com flex box mas tamb√
     font-family: monospace;
 }
 
+
+
 #board-size {
     display: flex;
     justify-content: center;

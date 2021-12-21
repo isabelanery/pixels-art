@@ -107,7 +107,6 @@ let pixelKid = document.getElementsByClassName('pixel');
 function clear () {
     for ( let i = 0; i < pixelKid.length; i += 1) {
         pixelKid[i].id = ""; 
-         
     }
 }
 
