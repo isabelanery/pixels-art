@@ -20,9 +20,9 @@ function createPixelBoard (inputNumber) {
 
 // declara onde estão os elementos no DOM 
 const black = document.querySelector('#zero');
-const blue1 = document.querySelector('#one'); 
-const blue2 = document.querySelector('#two');
-const blue3 = document.querySelector('#three'); 
+const blue1 = document.getElementById('one'); 
+const blue2 = document.getElementById('two');
+const blue3 = document.getElementById('three'); 
 const colorPalette = document.querySelector('#color-palette');
 const colorPalleteList = document.querySelectorAll('#color-palette');
  
@@ -32,12 +32,13 @@ let clickedColor = undefined;
 let clickedPixel = undefined; 
 let color = undefined;
 
-// onload - funçao adiciona selected à cor black 
+// onload -  
 window.onload = function() {
     black.classList.add('selected');
     clickedColor = black.id;
     color = black.id;
     createPixelBoard(5); 
+    newColors();
     // console.log(clickedColor) 
 }
 
@@ -112,13 +113,20 @@ function clear () {
 }
 
 const clearbtn = document.querySelector('#clear-board');
-
 clearbtn.addEventListener('click', clear);
 
 // pixels dinamicos requisito 10 
-const inputN = document.querySelector('#board-size');
+const inputN = document.getElementById('board-size');
 const btnCreateBoard = document.querySelector('#generate-board'); 
 const sectionBoard = document.querySelector('#secPixelBoard');
+
+function removeBoard() { 
+    let lines = document.querySelectorAll('.linePixel');
+
+    for (let i = 0; i < lines.length; i += 1) {
+        lines[i].remove();
+    }
+}
 
 function generateNewBoard () { 
     let size = inputN.value;
@@ -131,19 +139,33 @@ function generateNewBoard () {
         size = size
     }
     
-    inputN.value = null; 
+    
 
-    let lines = document.querySelectorAll('.linePixel');
-
-    for (let i = 0; i < lines.length; i += 1) {
-        lines[i].remove();
-    }
-
-    if (size === undefined) { 
-        window.alert('Board inválido!')
+    if (inputN.value === "") { // travando aqui 
+        window.alert('Board inválido!'); 
     } else {
+        removeBoard(); 
         createPixelBoard(size); 
     }
+    inputN.value = null; 
 }
 
 btnCreateBoard.addEventListener('click', generateNewBoard);
+
+
+// change colors 
+
+function randomColor () { 
+    var digits = '0123456789ABCDEF'; 
+    var color = '#'; 
+    for (var i = 0; i < 6; i +=1 ) { 
+        color += digits[Math.floor(Math.random() * 16)];
+    }
+    return color 
+} // encontrei essa solução para gerar cor aleatória no Stack Overflow, entendi o que tava acontecendo e adicionei aqui :) 
+
+function newColors () { 
+    blue1.style.backgroundColor = randomColor(); 
+    blue2.style.backgroundColor = randomColor(); 
+    blue3.style.backgroundColor = randomColor(); 
+}
