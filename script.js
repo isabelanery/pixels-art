@@ -38,8 +38,6 @@ window.onload = function() {
     clickedColor = black.id;
     color = black.id;
     createPixelBoard(5); 
-    newColors();
-    // console.log(clickedColor) 
 }
 
 
@@ -109,6 +107,7 @@ let pixelKid = document.getElementsByClassName('pixel');
 function clear () {
     for ( let i = 0; i < pixelKid.length; i += 1) {
         pixelKid[i].id = ""; 
+         
     }
 }
 
@@ -138,8 +137,6 @@ function generateNewBoard () {
     } else { 
         size = size
     }
-    
-    
 
     if (inputN.value === "") { // travando aqui 
         window.alert('Board inválido!'); 
@@ -147,6 +144,7 @@ function generateNewBoard () {
         removeBoard(); 
         createPixelBoard(size); 
     }
+
     inputN.value = null; 
 }
 
@@ -169,3 +167,6 @@ function newColors () {
     blue2.style.backgroundColor = randomColor(); 
     blue3.style.backgroundColor = randomColor(); 
 }
+
+const btnColors = document.getElementById('new-colors'); 
+btnColors.addEventListener('click', newColors); 
