@@ -25,12 +25,13 @@ let color = undefined;
 
 // onload -  
 window.onload = function() {
+    black.style.backgroundColor = '#000000'
     black.classList.add('selected');
-    clickedColor = black.classList[1]; 
+    clickedColor = black.style.backgroundColor; 
     // console.log(clickedColor)
-    color = black.classList[1];
-    // console.log(color)
+    color = clickedColor;
     createPixelBoard(5); 
+    newColors();
 }
 
 // declara onde estão os elementos no DOM 
@@ -40,6 +41,28 @@ const blue2 = document.querySelector('.two');
 const blue3 = document.querySelector('.three'); 
 const colorPalette = document.querySelector('#color-palette');
 const colorPalleteList = document.querySelectorAll('#color-palette');
+
+// change colors 
+
+function randomColor () { 
+    var digits = '0123456789ABCDEF'; 
+    var color = '#'; 
+    for (var i = 0; i < 6; i +=1 ) { 
+        color += digits[Math.floor(Math.random() * 16)];
+    }
+    return color 
+} // encontrei essa solução para gerar cor aleatória no Stack Overflow, entendi o que tava acontecendo e adicionei aqui :) 
+
+function newColors () { 
+    blue1.style.backgroundColor = randomColor(); 
+    blue2.style.backgroundColor = randomColor(); 
+    blue3.style.backgroundColor = randomColor(); 
+}
+
+const btnColors = document.getElementById('new-colors'); 
+btnColors.addEventListener('click', newColors); 
+// 
+
 
 // remove a classe selected de todas as cores da paleta 
 function removeSelected () { 
@@ -59,11 +82,11 @@ function removeSelected () {
 // seleciona a cor 
 function classSelected () { 
     if (clickedColor.classList.contains('selected')) {
-        color = clickedColor.classList[1];
+        color = clickedColor.style.backgroundColor;
         // console.log(color) 
     } else { 
         removeSelected();
-        color = clickedColor.classList[1]; 
+        color = clickedColor.style.backgroundColor; 
         clickedColor.classList.add('selected'); 
         // console.log(color)
     }
@@ -71,8 +94,10 @@ function classSelected () {
 
 function selectColor (event) {
     clickedColor = event.target;  // o valor é indefinido pois aguarda o click 
-    color = clickedColor.classList[1]; 
-    // console.log(color)
+    color = clickedColor.style.backgroundColor; 
+
+    // console.log(color) 
+    // mudar a forma de pintar = style.bgcolor 
     classSelected();
 }
 
@@ -84,16 +109,17 @@ blue3.addEventListener('click', selectColor);
 
 function paint (event) {
     clickedPixel = event.target; 
-    if (clickedPixel.classList.length >= 1) { 
-        clickedPixel.classList.remove(clickedPixel.classList[1]);
-        clickedPixel.classList.add(color); 
-    } else { 
-        clickedPixel.classList.add(color); 
-    }
+    // if (clickedPixel.classList.length >= 1) { 
+    //     clickedPixel.classList.remove(clickedPixel.classList[1]);
+    //     clickedPixel.classList.add(color); 
+    // } else { 
+    //     clickedPixel.classList.add(color); 
+    // }
+
+    clickedPixel.style.backgroundColor = color;
 }
 
 // pinta os pixels 
-
 insidePixelBoard.addEventListener('click', paint);
 
 // clear board 
@@ -102,6 +128,7 @@ let pixelKid = document.getElementsByClassName('pixel');
 function clear () {
     for ( let i = 0; i < pixelKid.length; i += 1) {
         pixelKid[i].classList.remove(pixelKid[i].classList[1]); 
+        pixelKid[i].style.backgroundColor = '#FFFFFF';
     }
 }
 
@@ -145,22 +172,3 @@ function generateNewBoard () {
 btnCreateBoard.addEventListener('click', generateNewBoard);
 
 
-// change colors 
-
-function randomColor () { 
-    var digits = '0123456789ABCDEF'; 
-    var color = '#'; 
-    for (var i = 0; i < 6; i +=1 ) { 
-        color += digits[Math.floor(Math.random() * 16)];
-    }
-    return color 
-} // encontrei essa solução para gerar cor aleatória no Stack Overflow, entendi o que tava acontecendo e adicionei aqui :) 
-
-function newColors () { 
-    blue1.style.backgroundColor = randomColor(); 
-    blue2.style.backgroundColor = randomColor(); 
-    blue3.style.backgroundColor = randomColor(); 
-}
-
-const btnColors = document.getElementById('new-colors'); 
-btnColors.addEventListener('click', newColors); 

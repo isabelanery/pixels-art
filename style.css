@@ -109,7 +109,7 @@ itens centralizados, por√©m travando no teste npm. tentei com flex box mas tamb√
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: fit-content;
+    width: fit-content; 
     margin: 27px;
     border: solid black 1px;
 } 
