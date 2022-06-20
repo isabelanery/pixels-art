@@ -12,6 +12,10 @@ Users can also customize the size of the board, clean it all to start again and 
 - HTML5
 - CSS3
 
+### Developed Skills
+- Manipulating DOM; 
+- Using JavaScript;
+
 ### In works: 
 I plan to update some parts of the design. 
 
